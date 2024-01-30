@@ -1,0 +1,31 @@
+{
+  "type": "infinite_scrollable_list",
+  "args": {
+    "dataUrl": "https://something.example",
+    "itemTemplate": {
+      "type": "list_tile",
+      "args": {
+        "title": {
+          "type": "text",
+          "args": {
+            "text": "${pokemon['name']}"
+          }
+        },
+        "leading": {
+          "type": "network_image",
+          "args": {
+            "fit": "cover",
+            "src": "${'https://robohash.org/' + pokemon['name']}",
+            "width": 100
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "args": {
+            "text": "${pokemon['url']}"
+          }
+        }
+      }
+    }
+  }
+}

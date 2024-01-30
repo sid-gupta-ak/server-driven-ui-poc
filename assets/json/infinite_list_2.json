@@ -1,0 +1,19 @@
+{
+  "type": "infinite_scrollable_list",
+  "args": {
+    "dataUrl": "https://something.example",
+    "itemTemplate": {
+      "type": "list_tile",
+      "args": {
+        "title": {
+          "type": "text",
+          "args": {
+            "text": "${pokemon['name']}"
+          }
+        }
+
+
+      }
+    }
+  }
+}

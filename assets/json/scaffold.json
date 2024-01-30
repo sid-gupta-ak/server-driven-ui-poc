@@ -1,0 +1,41 @@
+{
+  "type": "scaffold",
+  "args": {
+    "appBar": {
+      "type": "app_bar",
+      "args": {
+        "title": {
+          "type": "text",
+          "args": {
+            "text": "Sample scaffold from json"
+          }
+        }
+      }
+    },
+    "body": {
+      "type": "column",
+      "args": {
+        "children": [
+          {
+            "type": "text",
+            "args": {
+              "text": "Text 1"
+            }
+          },
+          {
+            "type": "sized_box",
+            "args": {
+              "height": 20
+            }
+          },
+          {
+            "type": "text",
+            "args": {
+              "text": "Text 2"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
