@@ -11,14 +11,6 @@
             "text": "${pokemon['name']}"
           }
         },
-        "leading": {
-          "type": "network_image",
-          "args": {
-            "fit": "cover",
-            "src": "${'https://robohash.org/' + pokemon['name']}",
-            "width": 100
-          }
-        },
         "subtitle": {
           "type": "text",
           "args": {

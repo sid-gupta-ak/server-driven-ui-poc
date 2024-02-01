@@ -13,18 +13,79 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         // home: PokemonScreen(),
-        home: Column(
-          children: [
-            Expanded(child: DynamicScreen()),
+        home: Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list.json',
+          ),
+          DynamicScreen(
+            assetFile: 'assets/json/infinite_list_2.json',
+          ),
 
-            // SizedBox(
-            //   height: 32,
-            //   child: Container(
-            //     color: Colors.black54,
-            //   ),
-            // ),
-            Expanded(child: DynamicScreen2())
-          ],
-        ));
+          // SizedBox(
+          //   height: 32,
+          //   child: Container(
+          //     color: Colors.black54,
+          //   ),
+          // ),
+          // Expanded(child: DynamicScreen2())
+        ],
+      ),
+    ));
   }
 }

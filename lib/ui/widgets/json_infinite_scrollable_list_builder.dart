@@ -101,24 +101,21 @@ class _InfiniteScrollableListState extends State<_InfiniteScrollableList> {
   Widget build(BuildContext context) {
     print('build of infinite called');
 
-    return RefreshIndicator(
-      child: PagedListView.separated(
-        pagingController: _pagingController,
-        padding: const EdgeInsets.all(16),
-        builderDelegate: PagedChildBuilderDelegate(
-            itemBuilder: (context, value, index) {
-              var pokemon = value as Map<String, dynamic>;
-              _registry.setValue('title', pokemon['name']);
-              _registry.setValue('pokemon', pokemon);
-              return _data.build(context: context, registry: _registry);
-            },
-            firstPageErrorIndicatorBuilder: (context) =>
-                Text('first page failed')),
-        separatorBuilder: (context, index) => SizedBox(
-          height: 16,
-        ),
+    return PagedSliverList.separated(
+      pagingController: _pagingController,
+      // padding: const EdgeInsets.all(16),
+      builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (context, value, index) {
+            var pokemon = value as Map<String, dynamic>;
+            _registry.setValue('title', pokemon['name']);
+            _registry.setValue('pokemon', pokemon);
+            return _data.build(context: context, registry: _registry);
+          },
+          firstPageErrorIndicatorBuilder: (context) =>
+              Text('first page failed')),
+      separatorBuilder: (context, index) => SizedBox(
+        height: 16,
       ),
-      onRefresh: () => Future.sync(() => _pagingController.refresh()),
     );
   }
 }
