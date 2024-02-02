@@ -18,11 +18,8 @@ class RemoteDataSource {
   Future<Result> getPokemons(offset) async {
     // print('Making the call to get pokemons');
     try {
-      print('making request');
       final response = await client.request(
           requestType: RequestType.GET, path: 'pokemon', parameter: offset);
-
-      print('got response');
 
       if (response.statusCode == 200) {
         return Result.success(json.decode(response.body));

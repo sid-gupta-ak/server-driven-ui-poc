@@ -2,6 +2,7 @@
   "type": "infinite_scrollable_list",
   "args": {
     "dataUrl": "https://something.example",
+    "maxSize": 0,
     "itemTemplate": {
       "type": "list_tile",
       "args": {

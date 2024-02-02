@@ -66,6 +66,7 @@ class JsonInfiniteScrollableListBuilder
       dataUrl: model.dataUrl,
       itemTemplate: model.itemTemplate,
       key: key,
+      maxSize: model.maxSize,
     );
   }
 }
@@ -76,11 +77,13 @@ class JsonInfiniteScrollableList extends JsonWidgetData {
     JsonWidgetRegistry? registry,
     required this.dataUrl,
     required this.itemTemplate,
+    this.maxSize,
   }) : super(
           jsonWidgetArgs: JsonInfiniteScrollableListBuilderModel.fromDynamic(
             {
               'dataUrl': dataUrl,
               'itemTemplate': itemTemplate,
+              'maxSize': maxSize,
               ...args,
             },
             args: args,
@@ -91,6 +94,7 @@ class JsonInfiniteScrollableList extends JsonWidgetData {
               {
                 'dataUrl': dataUrl,
                 'itemTemplate': itemTemplate,
+                'maxSize': maxSize,
                 ...args,
               },
               args: args,
@@ -103,6 +107,8 @@ class JsonInfiniteScrollableList extends JsonWidgetData {
   final String dataUrl;
 
   final Map<String, dynamic> itemTemplate;
+
+  final int? maxSize;
 }
 
 class JsonInfiniteScrollableListBuilderModel extends JsonWidgetBuilderModel {
@@ -110,11 +116,14 @@ class JsonInfiniteScrollableListBuilderModel extends JsonWidgetBuilderModel {
     super.args, {
     required this.dataUrl,
     required this.itemTemplate,
+    this.maxSize,
   });
 
   final String dataUrl;
 
   final Map<String, dynamic> itemTemplate;
+
+  final int? maxSize;
 
   static JsonInfiniteScrollableListBuilderModel fromDynamic(
     dynamic map, {
@@ -160,6 +169,11 @@ class JsonInfiniteScrollableListBuilderModel extends JsonWidgetBuilderModel {
           args,
           dataUrl: map['dataUrl'],
           itemTemplate: map['itemTemplate'],
+          maxSize: () {
+            dynamic parsed = JsonClass.maybeParseInt(map['maxSize']);
+
+            return parsed;
+          }(),
         );
       }
     }
@@ -172,6 +186,7 @@ class JsonInfiniteScrollableListBuilderModel extends JsonWidgetBuilderModel {
     return JsonClass.removeNull({
       'dataUrl': dataUrl,
       'itemTemplate': itemTemplate,
+      'maxSize': maxSize,
       ...args,
     });
   }
@@ -190,6 +205,7 @@ class InfiniteScrollableListSchema {
     'properties': {
       'dataUrl': SchemaHelper.stringSchema,
       'itemTemplate': SchemaHelper.anySchema,
+      'maxSize': SchemaHelper.numberSchema,
     },
   };
 }

@@ -30,12 +30,14 @@ class _InfiniteScrollableList extends StatefulWidget {
     super.key,
     required this.dataUrl,
     required this.itemTemplate,
+    int? maxSize,
     @JsonBuildArg() required this.data,
-  });
+  }) : this.maxSize = maxSize ?? 20;
 
   final String dataUrl;
   final Map<String, dynamic> itemTemplate;
   final JsonWidgetData data;
+  final int maxSize;
 
   // note - can be instantiated with url
   final RemoteDataSource apiResponse = RemoteDataSource();
@@ -51,7 +53,6 @@ class _InfiniteScrollableListState extends State<_InfiniteScrollableList> {
   late final JsonWidgetRegistry _registry;
 
   Future<void> _fetchPage(int pageKey) async {
-    print('fetch page being called with $pageKey');
     try {
       Result newPage = await widget.apiResponse.getPokemons(pageKey);
 
@@ -60,7 +61,7 @@ class _InfiniteScrollableListState extends State<_InfiniteScrollableList> {
 
       if (newPage is SuccessState) {
         var pokemons = (newPage as SuccessState).value['results'];
-        isLastPage = (previousCount + pokemons.length) > 100;
+        isLastPage = (previousCount + pokemons.length) > widget.maxSize;
 
         if (isLastPage) {
           _pagingController.appendLastPage(pokemons);
@@ -91,7 +92,6 @@ class _InfiniteScrollableListState extends State<_InfiniteScrollableList> {
 
   @override
   void dispose() {
-    print('dispose being called');
     // TODO: implement dispose
     _pagingController.dispose();
     super.dispose();
@@ -99,8 +99,6 @@ class _InfiniteScrollableListState extends State<_InfiniteScrollableList> {
 
   @override
   Widget build(BuildContext context) {
-    print('build of infinite called');
-
     return PagedSliverList.separated(
       pagingController: _pagingController,
       // padding: const EdgeInsets.all(16),

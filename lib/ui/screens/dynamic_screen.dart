@@ -38,7 +38,6 @@ class _DynamicScreenState extends State<DynamicScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('build of dynamic screen called');
     return DynamicSimpleScaffold(jsonData: jsonData);
   }
 
@@ -55,7 +54,6 @@ class _DynamicScreenState extends State<DynamicScreen> {
     ));
 
     readJson().then((newData) {
-      print('calling set state');
       setState(() {
         jsonData = newData;
       });
